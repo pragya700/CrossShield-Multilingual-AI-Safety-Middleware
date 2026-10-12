@@ -1,0 +1,15 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+pytest==8.3.3
+httpx==0.27.2
+lingua-language-detector==2.2.0
+
+# Phase 5: semantic jailbreak detection. sentence-transformers pulls in
+# torch, transformers, and huggingface-hub as transitive dependencies --
+# no separate embedding/ML library was added on top of it. numpy is used
+# directly for the cosine-similarity matrix math in
+# app/detectors/semantic_jailbreak_detector.py.
+sentence-transformers==6.1.0
+numpy==2.4.4
+

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CrossShield Dashboard</title>
+
+    <link rel="stylesheet" href="/dashboard/static/dashboard.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div>
+        <h1>CrossShield</h1>
+        <p>Multilingual AI Safety Monitoring Dashboard</p>
+    </div>
+
+    <div class="status">
+        <span class="status-dot"></span>
+        <span>Monitoring</span>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <!-- Time Range -->
+    <section class="toolbar">
+        <label for="hours">Time Range:</label>
+
+        <select id="hours">
+            <option value="24">Last 24 hours</option>
+            <option value="48">Last 48 hours</option>
+            <option value="72">Last 72 hours</option>
+            <option value="168">Last 7 days</option>
+        </select>
+
+        <button id="refreshButton">Refresh</button>
+    </section>
+
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="error hidden"></div>
+
+
+    <!-- Main Metrics -->
+    <section class="metrics">
+
+        <div class="metric-card">
+            <h3>Total Requests</h3>
+            <div id="totalRequests">-</div>
+        </div>
+
+        <div class="metric-card">
+            <h3>Completed</h3>
+            <div id="completed">-</div>
+        </div>
+
+        <div class="metric-card">
+            <h3>Input Blocked</h3>
+            <div id="inputBlocked">-</div>
+        </div>
+
+        <div class="metric-card">
+            <h3>Output Blocked</h3>
+            <div id="outputBlocked">-</div>
+        </div>
+
+        <div class="metric-card">
+            <h3>LLM Errors</h3>
+            <div id="llmErrors">-</div>
+        </div>
+
+        <div class="metric-card">
+            <h3>Average Risk</h3>
+            <div id="averageRisk">-</div>
+        </div>
+
+        <div class="metric-card">
+            <h3>Average Latency</h3>
+            <div id="averageLatency">-</div>
+        </div>
+
+    </section>
+
+
+    <!-- Risk and Decision Information -->
+    <section class="grid">
+
+        <div class="panel">
+            <h2>Risk Level Distribution</h2>
+            <div id="riskDistribution" class="distribution"></div>
+        </div>
+
+        <div class="panel">
+            <h2>Input Decisions</h2>
+            <div id="inputDecisionDistribution" class="distribution"></div>
+        </div>
+
+        <div class="panel">
+            <h2>Output Safety</h2>
+            <div id="outputSafetyDistribution" class="distribution"></div>
+        </div>
+
+        <div class="panel">
+            <h2>Languages</h2>
+            <div id="languageDistribution" class="distribution"></div>
+        </div>
+
+    </section>
+
+
+    <!-- Attack Categories -->
+    <section class="grid">
+
+        <div class="panel">
+            <h2>Top Attack Categories</h2>
+            <div id="attackCategories" class="distribution"></div>
+        </div>
+
+        <div class="panel">
+            <h2>Top Output Safety Categories</h2>
+            <div id="outputCategories" class="distribution"></div>
+        </div>
+
+    </section>
+
+
+    <!-- Trend -->
+    <section class="panel">
+
+        <div class="panel-header">
+            <h2>Hourly Request Trends</h2>
+
+            <span id="trendStatus">
+                Loading...
+            </span>
+        </div>
+
+        <div id="trendContainer" class="trend-container"></div>
+
+    </section>
+
+
+    <!-- Recent Events -->
+    <section class="panel">
+
+        <div class="panel-header">
+            <h2>Recent Security Events</h2>
+
+            <span id="eventCount"></span>
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Request ID</th>
+                        <th>Language</th>
+                        <th>Risk</th>
+                        <th>Decision</th>
+                        <th>LLM</th>
+                        <th>Output Safety</th>
+                        <th>Outcome</th>
+                    </tr>
+                </thead>
+
+                <tbody id="eventsTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <p>
+        CrossShield — Metadata-only security monitoring
+    </p>
+</footer>
+
+
+<script src="/dashboard/static/dashboard.js"></script>
+
+</body>
+</html>
